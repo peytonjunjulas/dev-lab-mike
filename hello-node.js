@@ -1,10 +1,11 @@
 const express = require('express')
 const app = express()
-
+const path = require("node:path");
 console.log("hello from node");
 
 app.get('/', function (req, res) {
-  res.send('Hello World from Express')
+  res.sendFile(path.join(__dirname, 'index.html'));
 })
-//change
-app.listen(3000)
+
+app.listen(process.env.PORT || 3000,
+  () => console.log("Server is running..."));
